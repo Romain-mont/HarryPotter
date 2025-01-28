@@ -1,0 +1,22 @@
+@startuml activity
+
+start
+
+:Connexion;
+if (Authorisé) then (oui)
+  :Menu de choix du rôle;
+  switch (Role)
+  case ( "Professeur" )
+    :UI prof;
+  case ( "Apprentit sorcier")
+    :UI apprentit sorcier;
+  case ( "Autre" )
+    :UI staff;
+  endswitch
+else (non)
+  :Message d'erreur;
+endif
+
+end
+
+@enduml

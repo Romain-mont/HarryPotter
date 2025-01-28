@@ -1,0 +1,38 @@
+@startuml sequence
+
+actor User
+participant Client
+participant Server
+participant Database
+
+User -> Client: Open login page
+activate Client
+Client -> Server: GET /login
+activate Server
+Server -> Client: Send login page
+deactivate Server
+Client -> User: Show login page
+deactivate Client
+
+User -> Client: Fill credentials
+activate Client
+Client -> Server: POST /login
+activate Server
+Server -> Database: Get user
+activate Database
+Database --> Server
+deactivate Database
+Server -> Server: Check user found
+Server -> Server: Check credentials
+Server -> Database: Get user's data
+activate Database
+Database --> Server
+deactivate Database
+Server -> Server: Generate token
+Server -> Client: Send token
+deactivate Server
+Client -> Client: Store token
+Client -> User: Redirect to home page
+deactivate Client
+
+@enduml
