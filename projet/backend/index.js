@@ -13,11 +13,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const client = new Client({
-  user: '',
-  password: '',
-  host: '',
+  user: 'poudlard',
+  password: 'poudlard',
+  host: 'localhost',
   port: 5432,
-  database: '',
+  database: 'poudlard',
 })
 client.connect(function(err) {
   if (err) throw err;
